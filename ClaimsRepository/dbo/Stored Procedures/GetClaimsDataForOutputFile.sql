@@ -1,6 +1,21 @@
 ﻿
+
 CREATE Proc [dbo].[GetClaimsDataForOutputFile] (@filerequestid uniqueidentifier)
 as 
+/*************************************************************************/
+/* Name	       :                                                         */
+/* Version     :                                                         */
+/* Author      :                                                         */
+/* Date	       : 01/13/2016                                              */
+/* Description :                                                         */
+/*                                                                       */
+/*************************************************************************/
+/* Date        : Version: Who: Description                               */
+/*************************************************************************/
+/* 01/13/2016  : 1.0    : JEP: Initial Release                           */
+/*************************************************************************/
+/* Parameters           :                                                */
+/*************************************************************************/
 DECLARE @unassignedBeneficiaryId INTEGER = 
 (SELECT 1 FROM Beneficiary WHERE FileRequestId = '00000000-0000-0000-0000-000000000000' AND ClientId = 0 AND BeneficiaryIdentifier = '');
 
