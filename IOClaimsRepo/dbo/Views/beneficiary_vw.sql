@@ -1,0 +1,31 @@
+﻿create view beneficiary_vw 
+as
+Select 
+BeneficiaryId,
+FileRequestId,
+ClientId,
+cast(BeneficiaryIdentifier as varchar (255) ) as BeneficiaryIdentifier,
+cast(FullName as varchar (255) ) as FullName,
+cast(FirstName as varchar (255) ) as FirstName,
+cast(MiddleName as varchar (255) ) as MiddleName,
+cast(LastName as varchar (255) ) as LastName,
+DateOfBirth,
+cast(Phone as varchar (255) ) as Phone,
+cast(Sex as varchar (255) ) as Sex,
+cast(BeneficiaryControlNumber as varchar (255) ) as BeneficiaryControlNumber,
+cast(CountryCode as varchar (255) ) as CountryCode,
+cast(AdditionalDataJson as varchar (max) ) as AdditionalDataJson,
+cast(MBR_ELIG_CNCL_DT as varchar (255) ) as MBR_ELIG_CNCL_DT,
+cast(MBR_LOB_CD as varchar (255) ) as MBR_LOB_CD,
+cast(HICN as varchar (255) ) as HICN,
+cast(CreatedBy as varchar (255) ) as CreatedBy,
+CreatedDate,
+cast(LastUpdatedBy as varchar (255) ) as LastUpdatedBy,
+LastUpdatedDate,
+Claim_id,
+cast(Address1 as varchar (255) ) as Address1,
+cast(Address2 as varchar (255) ) as Address2,
+cast(City as varchar (255) ) as City,
+cast(State as varchar (255) ) as State,
+cast(ZipCode as varchar (255) ) as ZipCode
+from dbo.Beneficiary

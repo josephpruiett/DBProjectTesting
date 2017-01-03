@@ -1,0 +1,31 @@
+﻿CREATE view Provider_vw 
+as
+Select 
+ProviderId,
+FileRequestId,
+OriginalLineNumber,
+ClientId,
+cast(ProviderNumber as varchar (255) ) as ProviderNumber,
+cast(CampusId as varchar (255) ) as CampusId,
+cast(Name as varchar (255) ) as Name,
+cast(NPI as varchar (255) ) as NPI,
+cast(SSN as varchar (255) ) as SSN,
+cast(EIN as varchar (255) ) as EIN,
+cast(FederalTaxIdNumber as varchar (255) ) as FederalTaxIdNumber,
+cast(Phone as varchar (255) ) as Phone,
+AcceptAssignment,
+cast(TaxonomyCode1 as varchar (255) ) as TaxonomyCode1,
+cast(TaxonomyCode2 as varchar (255) ) as TaxonomyCode2,
+cast(TaxonomyCode3 as varchar (255) ) as TaxonomyCode3,
+cast(ProviderType as varchar (255) ) as ProviderType,
+cast(AdditionalDataJson as varchar (MAX) ) as AdditionalDataJson,
+cast(CreatedBy as varchar (255) ) as CreatedBy,
+CreatedDate,
+cast(LastUpdatedBy as varchar (255) ) as LastUpdatedBy,
+LastUpdatedDate,
+cast(Address1 as varchar (255) ) as Address1,
+cast(Address2 as varchar (255) ) as Address2,
+cast(City as varchar (255) ) as City,
+cast(State as varchar (255) ) as State,
+cast(ZipCode as varchar (255) ) as ZipCode
+from dbo.Provider

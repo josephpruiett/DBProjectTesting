@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [pdioapsupport]
+    WITH PASSWORD = N'tZLozje:zv|c$l#H{{mmaY|xmsFT7_&#$!~<XpKnklj{pJ9S', SID = 0x3E7FDF7E0C91A04BB1950E8092E1B335, DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

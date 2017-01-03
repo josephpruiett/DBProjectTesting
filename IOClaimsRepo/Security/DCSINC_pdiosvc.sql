@@ -1,0 +1,2 @@
+﻿CREATE USER [DCSINC\pdiosvc] FOR LOGIN [DCSINC\pdiosvc];
+
