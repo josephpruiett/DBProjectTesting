@@ -87,16 +87,18 @@
     [AttendingProviderMedicareFacilityNumber]          NVARCHAR (255)   NULL,
     [SeverityOfIllness]                                VARCHAR (3)      NULL,
     [RiskOfMortality]                                  VARCHAR (3)      NULL,
-    PRIMARY KEY NONCLUSTERED ([ClaimId] ASC),
-    CONSTRAINT [FK39CFE44A27D3C24A] FOREIGN KEY ([Beneficiary_id]) REFERENCES [dbo].[Beneficiary] ([BeneficiaryId]),
-    CONSTRAINT [FK39CFE44A3C3B058D] FOREIGN KEY ([BillingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
-    CONSTRAINT [FK39CFE44A6BFC0315] FOREIGN KEY ([OperatingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
-    CONSTRAINT [FK39CFE44A6C3D6728] FOREIGN KEY ([AttendingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
-    CONSTRAINT [FK39CFE44A6F5E7C9B] FOREIGN KEY ([Payer3_id]) REFERENCES [dbo].[Payer] ([PayerId]),
-    CONSTRAINT [FK39CFE44A77F46490] FOREIGN KEY ([Payer2_id]) REFERENCES [dbo].[Payer] ([PayerId]),
-    CONSTRAINT [FK39CFE44AAA45DA15] FOREIGN KEY ([Payer1_id]) REFERENCES [dbo].[Payer] ([PayerId]),
-    CONSTRAINT [FK39CFE44AE9CA2781] FOREIGN KEY ([ReferringProviderOrOtherSourceProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId])
+    CONSTRAINT [PK_Claim_ClaimId] PRIMARY KEY NONCLUSTERED ([ClaimId] ASC),
+    CONSTRAINT [FK_Claim_AttendingProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([AttendingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
+    CONSTRAINT [FK_Claim_Beneficiary_id_TO_Beneficiary_BeneficiaryId] FOREIGN KEY ([Beneficiary_id]) REFERENCES [dbo].[Beneficiary] ([BeneficiaryId]),
+    CONSTRAINT [FK_Claim_BillingProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([BillingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
+    CONSTRAINT [FK_Claim_OperatingProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([OperatingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
+    CONSTRAINT [FK_Claim_Payer1_id_TO_Payer_PayerId] FOREIGN KEY ([Payer1_id]) REFERENCES [dbo].[Payer] ([PayerId]),
+    CONSTRAINT [FK_Claim_Payer2_id_TO_Payer_PayerId] FOREIGN KEY ([Payer2_id]) REFERENCES [dbo].[Payer] ([PayerId]),
+    CONSTRAINT [FK_Claim_Payer3_id_TO_Payer_PayerId] FOREIGN KEY ([Payer3_id]) REFERENCES [dbo].[Payer] ([PayerId]),
+    CONSTRAINT [FK_Claim_ReferringProviderOrOtherSourceProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([ReferringProviderOrOtherSourceProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId])
 );
+
+
 
 
 GO
@@ -112,4 +114,19 @@ CREATE NONCLUSTERED INDEX [NC_CLaim_FileRequestId]
 GO
 CREATE NONCLUSTERED INDEX [NC_Client_ClaimNumber]
     ON [dbo].[Claim]([ClientId] ASC, [ClaimNumber] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [NC_OperatingProvider_id]
+    ON [dbo].[Claim]([OperatingProvider_id] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [NC_BillingProvider_id]
+    ON [dbo].[Claim]([BillingProvider_id] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [NC_AttendingProvider_id]
+    ON [dbo].[Claim]([AttendingProvider_id] ASC);
 

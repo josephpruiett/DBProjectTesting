@@ -26,8 +26,10 @@
     [City]               NVARCHAR (255)   NULL,
     [State]              NVARCHAR (255)   NULL,
     [ZipCode]            NVARCHAR (255)   NULL,
-    PRIMARY KEY CLUSTERED ([ProviderId] ASC)
+    CONSTRAINT [PK_Provider_ProviderId] PRIMARY KEY CLUSTERED ([ProviderId] ASC)
 );
+
+
 
 
 GO

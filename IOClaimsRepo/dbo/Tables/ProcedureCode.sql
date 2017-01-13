@@ -4,7 +4,9 @@
     [Sequence]        INT          NULL,
     [ServiceLine_id]  INT          NULL,
     [ProcedureDate]   DATETIME     NULL,
-    PRIMARY KEY NONCLUSTERED ([ProcedureCodeId] ASC),
-    CONSTRAINT [FK_PROCCODE_TO_SERVICELINE] FOREIGN KEY ([ServiceLine_id]) REFERENCES [dbo].[ServiceLine] ([ServiceLineId])
+    CONSTRAINT [PK_ProcedureCode_ProcedureCodeId] PRIMARY KEY NONCLUSTERED ([ProcedureCodeId] ASC),
+    CONSTRAINT [FK_ProcedureCode_ServiceLine_id_TO_ServiceLine_ServiceLineId] FOREIGN KEY ([ServiceLine_id]) REFERENCES [dbo].[ServiceLine] ([ServiceLineId])
 );
+
+
 

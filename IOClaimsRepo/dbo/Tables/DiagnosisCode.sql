@@ -4,9 +4,11 @@
     [Sequence]           INT            NULL,
     [ServiceLine_id]     INT            NULL,
     [PresentOnAdmission] VARCHAR (4)    NULL,
-    PRIMARY KEY NONCLUSTERED ([DiagnosisCodeId] ASC),
-    CONSTRAINT [FK173E1A768FFAD32A] FOREIGN KEY ([ServiceLine_id]) REFERENCES [dbo].[ServiceLine] ([ServiceLineId])
+    CONSTRAINT [PK_DiagnosisCode_DiagnosisCodeId] PRIMARY KEY NONCLUSTERED ([DiagnosisCodeId] ASC),
+    CONSTRAINT [FK_DiagnosisCode_ServiceLine_id_TO_ServiceLine_ServiceLineId] FOREIGN KEY ([ServiceLine_id]) REFERENCES [dbo].[ServiceLine] ([ServiceLineId])
 );
+
+
 
 
 GO

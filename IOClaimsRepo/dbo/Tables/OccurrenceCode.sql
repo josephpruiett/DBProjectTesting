@@ -4,7 +4,9 @@
     [BeginDate]        DATETIME       NULL,
     [EndDate]          DATETIME       NULL,
     [Claim_id]         INT            NULL,
-    PRIMARY KEY CLUSTERED ([OccurrenceCodeId] ASC),
-    CONSTRAINT [FK9181CEBA907A1A64] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
+    CONSTRAINT [PK_OccurrenceCode_OccurrenceCodeId] PRIMARY KEY CLUSTERED ([OccurrenceCodeId] ASC),
+    CONSTRAINT [FK_OccurrenceCode_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
 );
+
+
 

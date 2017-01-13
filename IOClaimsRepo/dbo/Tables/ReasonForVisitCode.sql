@@ -2,7 +2,9 @@
     [ReasonForVisitCodeId] INT            IDENTITY (1, 1) NOT NULL,
     [Code]                 NVARCHAR (255) NULL,
     [Claim_id]             INT            NULL,
-    PRIMARY KEY CLUSTERED ([ReasonForVisitCodeId] ASC),
-    CONSTRAINT [FK365E7277907A1A64] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
+    CONSTRAINT [PK_ReasonForVisitCode_ReasonForVisitCodeId] PRIMARY KEY CLUSTERED ([ReasonForVisitCodeId] ASC),
+    CONSTRAINT [FK_ReasonForVisitCode_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
 );
+
+
 

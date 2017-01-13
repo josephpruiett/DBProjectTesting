@@ -3,7 +3,9 @@
     [Code]            NVARCHAR (255) NULL,
     [Claim_id]        INT            NULL,
     [Sequence]        INT            NULL,
-    PRIMARY KEY CLUSTERED ([ConditionCodeId] ASC),
-    CONSTRAINT [FK2B1DBAE6907A1A64] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
+    CONSTRAINT [PK_ConditionCode_ConditionCodeId] PRIMARY KEY CLUSTERED ([ConditionCodeId] ASC),
+    CONSTRAINT [FK_ConditionCode_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
 );
+
+
 

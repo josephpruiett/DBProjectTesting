@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Beneficiary] (
+CREATE TABLE [dbo].[Beneficiary] (
     [BeneficiaryId]            INT              IDENTITY (1, 1) NOT NULL,
     [FileRequestId]            UNIQUEIDENTIFIER NULL,
     [ClientId]                 INT              NULL,
@@ -26,18 +26,24 @@
     [City]                     NVARCHAR (255)   NULL,
     [State]                    NVARCHAR (255)   NULL,
     [ZipCode]                  NVARCHAR (255)   NULL,
-    PRIMARY KEY NONCLUSTERED ([BeneficiaryId] ASC),
-    CONSTRAINT [FK611A42E7907A1A64] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
+    CONSTRAINT [PK_Beneficiary_BeneficiaryId] PRIMARY KEY CLUSTERED ([BeneficiaryId] ASC),
+    CONSTRAINT [FK_Beneficiary_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
 );
 
 
+
+
 GO
-CREATE NONCLUSTERED INDEX [IDX_Beneficiary_FileRequestId]
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [NC_FileRequestId]
     ON [dbo].[Beneficiary]([FileRequestId] ASC)
     INCLUDE([BeneficiaryIdentifier]);
 
 
 GO
-CREATE NONCLUSTERED INDEX [Idx_BeneficiaryIdentifier]
+CREATE NONCLUSTERED INDEX [NC_BeneficiaryIdentifier]
     ON [dbo].[Beneficiary]([BeneficiaryIdentifier] ASC);
 

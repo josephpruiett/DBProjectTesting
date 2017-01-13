@@ -380,4 +380,8 @@
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </ArtifactReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="IOClaimsRepo.publish.xml" />
+    <None Include="IOClaimsRepoDevPush01122017.publish.xml" />
+  </ItemGroup>
 </Project>

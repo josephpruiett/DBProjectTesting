@@ -19,7 +19,9 @@
     [City]                        NVARCHAR (255) NULL,
     [State]                       NVARCHAR (255) NULL,
     [ZipCode]                     NVARCHAR (255) NULL,
-    PRIMARY KEY CLUSTERED ([InsuredPartyId] ASC),
-    CONSTRAINT [FK3FB3643C907A1A64] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
+    CONSTRAINT [PK_InsuredParty_InsuredPartyId] PRIMARY KEY CLUSTERED ([InsuredPartyId] ASC),
+    CONSTRAINT [FK_InsuredParty_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
 );
+
+
 

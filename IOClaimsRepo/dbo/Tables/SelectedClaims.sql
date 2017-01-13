@@ -57,6 +57,8 @@
     [BatchDate]                DATETIME         NOT NULL,
     [FileRequestId]            UNIQUEIDENTIFIER NULL,
     [LobTypeId]                NVARCHAR (255)   NULL,
-    PRIMARY KEY CLUSTERED ([SelectedClaimsId] ASC)
+    CONSTRAINT [PK_SelectedClaims_SelectedClaimsId] PRIMARY KEY CLUSTERED ([SelectedClaimsId] ASC)
 );
+
+
 
