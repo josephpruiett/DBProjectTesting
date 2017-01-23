@@ -16,7 +16,7 @@ BEGIN
 	
 	SELECT @InputFilePath
 		
-	EXEC IOclaimsrepo.dbo.LoadSelectionFile @InputFilePath
+	EXEC [$(DatabaseName)].dbo.LoadSelectionFile @InputFilePath
 	
 	SELECT 'Total number of Target claims' 
 	select count(distinct claim_key) from RESC_Excellus_Selection where batch_key = @Batchname
@@ -25,7 +25,7 @@ BEGIN
 	select count(distinct REF_CLAIM1_KEY) from RESC_Excellus_Selection where batch_key = @Batchname
 	
 	SELECT 'Claims with missing bene record - WARN: only considers target claims, not the ref claims'
-	select distinct ClaimNumber from IOClaimsRepo.dbo.claim with (nolock) where claimnumber in (
+	select distinct ClaimNumber from [$(DatabaseName)].dbo.claim with (nolock) where claimnumber in (
 		select distinct claim_key from RESC_Excellus_Selection where batch_key = @Batchname
 	) and Beneficiary_id = 1
 	
@@ -105,12 +105,12 @@ BEGIN
 		SELECT DISTINCT
 		[DataDate],[Claim_Number],[Source_Adjustment_Number]
 		 
-		FROM [ExcellusRaw].[dbo].[ClaimMaster]
+		FROM [$(ExcellusRaw)].[dbo].[ClaimMaster]
 		where	concat([Claim_Number],[Source_Adjustment_Number]) in 
 		(
 
 			select  distinct claimnumber 
-			from IOClaimsRepo.dbo.claim with (nolock) where claimnumber in
+			from [$(DatabaseName)].dbo.claim with (nolock) where claimnumber in
 			(
 				select distinct claim_key from RESC_Excellus_Selection where batch_key = @Batchname				
 			) 
@@ -122,7 +122,7 @@ BEGIN
 
 	SELECT @CLAIMS_TO_EXPORT
 
-	EXECUTE @RC = [ExcellusRaw].[dbo].[usp_ExportFilesFromExcellusSampleData] 
+	EXECUTE @RC = [$(ExcellusRaw)].[dbo].[usp_ExportFilesFromExcellusSampleData] 
 	   @CLAIMS_TO_EXPORT
 	  ,@FILE_PREFIX
 	  ,@FILE_PATH

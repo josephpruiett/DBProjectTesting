@@ -11,7 +11,7 @@ BEGIN
 
 IF OBJECT_ID('dbo.ClaimAdditionalDataStage', 'U') IS NOT NULL 
 BEGIN
-DROP TABLE [dbo].[ClaimAdditionalDataStage]
+DROP TABLE [$(DatabaseName)].[dbo].[ClaimAdditionalDataStage]
 END
 
 
@@ -43,11 +43,11 @@ SELECT
 ,Patient_Status_Desc 
 ,Src_appl_code 
 ,Source_Adjustment_Number 
-INTO ClaimAdditionalDataStage
-	FROM [ExcellusRaw].[dbo].[ClaimMaster] 
+INTO [$(DatabaseName)].[dbo].[ClaimAdditionalDataStage]
+	FROM [$(ExcellusRaw)].[dbo].[ClaimMaster] 
 WHERE datadate = @DataDate   
 
-CREATE CLUSTERED INDEX CL_X ON ClaimAdditionalDataStage (ClaimRepoClaimNumber)
+CREATE CLUSTERED INDEX CL_X ON [$(DatabaseName)].[dbo].[ClaimAdditionalDataStage] (ClaimRepoClaimNumber)
 
 
 SELECT 
@@ -61,7 +61,7 @@ CREATE UNIQUE CLUSTERED INDEX CL_X ON #CLAIM(ClaimId)
 
 
 
-INSERT INTO [dbo].[ClaimAdditionalData]
+INSERT INTO [$(DatabaseName)].[dbo].[ClaimAdditionalData]
            ([ClaimID]
            ,[ClientID]
            ,[File_Type]
@@ -113,13 +113,13 @@ A.[ClaimID]
 
 FROM 
 #CLAIM A  
-INNER JOIN ClaimAdditionalDataStage B  ON A.ClaimNumber = B.ClaimRepoClaimNumber 
+INNER JOIN [$(DatabaseName)].[dbo].[ClaimAdditionalDataStage] B  ON A.ClaimNumber = B.ClaimRepoClaimNumber 
 
 
 
 
 DROP TABLE #CLAIM
-DROP TABLE ClaimAdditionalDataStage
+DROP TABLE [$(DatabaseName)].[dbo].[ClaimAdditionalDataStage]
 END
 
 

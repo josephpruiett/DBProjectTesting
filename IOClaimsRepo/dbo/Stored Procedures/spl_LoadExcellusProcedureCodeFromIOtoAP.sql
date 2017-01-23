@@ -8,6 +8,7 @@ CREATE Procedure [dbo].[spl_LoadExcellusProcedureCodeFromIOtoAP] (
 ) as 
 BEGIN
 
+--- Code needs to be updated to point to NewAuditPlatform -- 01/20/2017
 PRINT 'Selecting existing AP claims from ProcedureCode table for bactckey - ' + @BatchKey
 select max(p.Claim_Id) as AP_Claim_id, max(c.ClaimNumber) as ClaimNumber
 into #ap_proccode_claim_numbers
@@ -84,7 +85,7 @@ SELECT
 	c.AP_Claim_id,
 	iop.Sequence,
 	CONVERT(datetime, @ProcCodeDateDefault, @ProcCodeDateDefaultFormat)
-FROM #claimsrepo_service_line_ids c INNER JOIN IOClaimsRepo.dbo.ProcedureCode iop
+FROM #claimsrepo_service_line_ids c INNER JOIN [$(DatabaseName].dbo.ProcedureCode iop
 ON (
 	c.ServiceLineId = iop.ServiceLine_id
 )

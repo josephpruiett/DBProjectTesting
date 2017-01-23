@@ -20,9 +20,9 @@ DECLARE @SQL NVARCHAR(1000)
 	  REPLACE(REPLACE(REPLACE(REPLACE([FileName],'Excellus Claims','')  ,'.txt','')  ,'-','')  ,'_','')
 	  )) + '01',102)),102),7),'.','') as DataDate 
 	  ,B.LastRequestId
-       FROM [IOPortal].[dbo].[IoFile] A 
+       FROM [$(IOPortal)].[dbo].[IoFile] A 
 			INNER JOIN 
-			[IOPortal].[dbo].[IoJob] B on A.ID = B.File_Id
+			[$(IOPortal)].[dbo].[IoJob] B on A.ID = B.File_Id
   WHERE ClientID = 3 and FileName like '%Claims%'
   ) 
   Select @FileRequestId = [LastRequestId] 

@@ -19,9 +19,12 @@
     [City]                        NVARCHAR (255) NULL,
     [State]                       NVARCHAR (255) NULL,
     [ZipCode]                     NVARCHAR (255) NULL,
+    [STAGING_StageID]             INT            NULL,
     CONSTRAINT [PK_InsuredParty_InsuredPartyId] PRIMARY KEY CLUSTERED ([InsuredPartyId] ASC),
     CONSTRAINT [FK_InsuredParty_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
 );
+
+
 
 
 

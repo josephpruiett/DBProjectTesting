@@ -16,7 +16,7 @@ BEGIN
 
 IF OBJECT_ID('dbo.AdditionalDataStage', 'U') IS NOT NULL 
 BEGIN
-DROP TABLE [dbo].[AdditionalDataStage]
+DROP TABLE [$(DatabaseName)].[dbo].[AdditionalDataStage]
 END
 
 
@@ -124,14 +124,14 @@ SELECT
 ,CONVERT(VARCHAR(20) ,[Discharge_Status]) AS [Discharge_Status]
 ,CONVERT(MONEY ,[HCRA_Surcharge_Amount]) AS [HCRA_Surcharge_Amount]
 ,CONVERT(MONEY ,[Risk_Withhold_Amount]) AS [Risk_Withhold_Amount]
-INTO AdditionalDataStage
-	FROM [ExcellusRaw].[dbo].[VW_ClaimDetails] 
+INTO [$(DatabaseName)].[dbo].[AdditionalDataStage]
+	FROM [$(ExcellusRaw)].[dbo].[VW_ClaimDetails] 
 WHERE datadate = @DataDate AND  
 [Claim_History_stage] = 'FINAL' 
 and RTRIM(LTRIM(SRC_APPL_ADJ_SQNC_NBR)) <> 'IFACETS'
 
 
-CREATE UNIQUE CLUSTERED INDEX CL_X ON AdditionalDataStage (ClaimRepoClaimNumber,ClaimRepoClaimLineNumber)
+CREATE UNIQUE CLUSTERED INDEX CL_X ON [$(DatabaseName)].[dbo].[AdditionalDataStage] (ClaimRepoClaimNumber,ClaimRepoClaimLineNumber)
 
 
 SELECT 

@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[Beneficiary] (
+﻿CREATE TABLE [dbo].[Beneficiary] (
     [BeneficiaryId]            INT              IDENTITY (1, 1) NOT NULL,
     [FileRequestId]            UNIQUEIDENTIFIER NULL,
     [ClientId]                 INT              NULL,
@@ -26,9 +26,12 @@ CREATE TABLE [dbo].[Beneficiary] (
     [City]                     NVARCHAR (255)   NULL,
     [State]                    NVARCHAR (255)   NULL,
     [ZipCode]                  NVARCHAR (255)   NULL,
+    [STAGING_StageID]          INT              NULL,
     CONSTRAINT [PK_Beneficiary_BeneficiaryId] PRIMARY KEY CLUSTERED ([BeneficiaryId] ASC),
     CONSTRAINT [FK_Beneficiary_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId])
 );
+
+
 
 
 

@@ -87,6 +87,7 @@
     [AttendingProviderMedicareFacilityNumber]          NVARCHAR (255)   NULL,
     [SeverityOfIllness]                                VARCHAR (3)      NULL,
     [RiskOfMortality]                                  VARCHAR (3)      NULL,
+    [STAGING_StageID]                                  INT              NULL,
     CONSTRAINT [PK_Claim_ClaimId] PRIMARY KEY NONCLUSTERED ([ClaimId] ASC),
     CONSTRAINT [FK_Claim_AttendingProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([AttendingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
     CONSTRAINT [FK_Claim_Beneficiary_id_TO_Beneficiary_BeneficiaryId] FOREIGN KEY ([Beneficiary_id]) REFERENCES [dbo].[Beneficiary] ([BeneficiaryId]),
@@ -97,6 +98,8 @@
     CONSTRAINT [FK_Claim_Payer3_id_TO_Payer_PayerId] FOREIGN KEY ([Payer3_id]) REFERENCES [dbo].[Payer] ([PayerId]),
     CONSTRAINT [FK_Claim_ReferringProviderOrOtherSourceProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([ReferringProviderOrOtherSourceProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId])
 );
+
+
 
 
 

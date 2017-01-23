@@ -42,12 +42,15 @@
     [HcpcsCode]                          VARCHAR (10)    NULL,
     [NdcCode]                            VARCHAR (30)    NULL,
     [NdcUnits]                           VARCHAR (30)    NULL,
+    [STAGING_StageID]                    INT             NULL,
     CONSTRAINT [PK_ServiceLine_ServiceLineId] PRIMARY KEY CLUSTERED ([ServiceLineId] ASC),
     CONSTRAINT [FK_ServiceLine_AttendingProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([AttendingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
     CONSTRAINT [FK_ServiceLine_BillingProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([BillingProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId]),
     CONSTRAINT [FK_ServiceLine_Claim_id_TO_Claim_ClaimId] FOREIGN KEY ([Claim_id]) REFERENCES [dbo].[Claim] ([ClaimId]),
     CONSTRAINT [FK_ServiceLine_SupplementalProvider_id_TO_Provider_ProviderId] FOREIGN KEY ([SupplementalProvider_id]) REFERENCES [dbo].[Provider] ([ProviderId])
 );
+
+
 
 
 

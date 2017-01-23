@@ -46,12 +46,12 @@ Provider_ID  AS [ProviderNumber]
 ,PROV_NYS_SPECIALTY_CODE 
 ,PROV_NYS_SPECIALTY_DESCRIPTION 
 	
-INTO ProviderAdditionalDataStage
-FROM [ExcellusRaw].[dbo].[Provider] 
+INTO [$(DatabaseName)].[dbo].[ProviderAdditionalDataStage]
+FROM [$(ExcellusRaw)].[dbo].[Provider] 
 WHERE datadate = @DataDate   
 
 
-CREATE UNIQUE CLUSTERED INDEX CL_X ON ProviderAdditionalDataStage ( [ProviderNumber],[OriginalLineNumber])
+CREATE UNIQUE CLUSTERED INDEX CL_X ON [$(DatabaseName)].[dbo].[ProviderAdditionalDataStage] ( [ProviderNumber],[OriginalLineNumber])
 
 
 SELECT 

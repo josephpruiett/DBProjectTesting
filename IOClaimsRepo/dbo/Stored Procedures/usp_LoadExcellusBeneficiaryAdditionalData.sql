@@ -11,7 +11,7 @@ BEGIN
 
 IF OBJECT_ID('dbo.BeneficiaryAdditionalDataStage', 'U') IS NOT NULL 
 BEGIN
-DROP TABLE [dbo].[BeneficiaryAdditionalDataStage]
+DROP TABLE [$(DatabaseName)].[dbo].[BeneficiaryAdditionalDataStage]
 END
 
 
@@ -61,11 +61,11 @@ CONVERT(VARCHAR(20),Unique_ID)  AS [BeneficiaryIdentifier]
 ,MJR_RISK_CLS_NAME 
 ,Patient_Relationship_Code 
 ,Patient_Relationship_Description 
-INTO BeneficiaryAdditionalDataStage
-	FROM [ExcellusRaw].[dbo].[Member] 
+INTO [$(DatabaseName)].[dbo].BeneficiaryAdditionalDataStage
+	FROM [$(ExcellusRaw)].[dbo].[Member] 
 WHERE datadate = @DataDate  
 
-CREATE CLUSTERED INDEX CL_X ON BeneficiaryAdditionalDataStage ([BeneficiaryIdentifier],[Dependent_Number],[Contract_holders_ID],[Member_Termination_Date])
+CREATE CLUSTERED INDEX CL_X ON [$(DatabaseName)].[dbo].[BeneficiaryAdditionalDataStage] ([BeneficiaryIdentifier],[Dependent_Number],[Contract_holders_ID],[Member_Termination_Date])
 
 
 
@@ -137,7 +137,7 @@ INTO #INTERMEDIATE
 FROM 
 
 #BENE A  
-INNER JOIN BeneficiaryAdditionalDataStage B  ON A.Unique_ID = B.[BeneficiaryIdentifier] and A.[Dependent_Number] = B.[Dependent_Number] and A.[Contract_holders_ID] = B.[Contract_holders_ID]
+INNER JOIN [$(DatabaseName)].[dbo].[BeneficiaryAdditionalDataStage] B  ON A.Unique_ID = B.[BeneficiaryIdentifier] and A.[Dependent_Number] = B.[Dependent_Number] and A.[Contract_holders_ID] = B.[Contract_holders_ID]
 
 
 CREATE CLUSTERED INDEX CL_X ON #INTERMEDIATE([BeneficiaryId],[UNIQUE_ID],[Dependent_Number],[Contract_holders_ID],[Member_Termination_Date]);
@@ -151,7 +151,7 @@ GROUP BY  [BeneficiaryId],[UNique_ID],[Dependent_Number],[Contract_holders_ID]
 
 
 
-INSERT INTO [dbo].[BeneficiaryAdditionalData]
+INSERT INTO [$(DatabaseName)].[dbo].[BeneficiaryAdditionalData]
            ([BeneficiaryId]
            ,[ClientID]
            ,[File_Type]
@@ -244,7 +244,7 @@ SELECT
 DROP TABLE #FINAL
 DROP TABLE #INTERMEDIATE
 DROP TABLE #BENE
-DROP TABLE [dbo].[BeneficiaryAdditionalDataStage]
+DROP TABLE [$(DatabaseName)].[dbo].[BeneficiaryAdditionalDataStage]
 END
 
 
