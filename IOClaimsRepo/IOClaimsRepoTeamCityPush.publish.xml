@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>IOClaimsRepoTeamCityPush</TargetDatabaseName>
+    <DeployScriptFileName>IOClaimsRepo.sql</DeployScriptFileName>
+    <TargetConnectionString>Data Source=.\SQL2014v2;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+    <BlockWhenDriftDetected>False</BlockWhenDriftDetected>
+    <RegisterDataTierApplication>False</RegisterDataTierApplication>
+    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <DropStatisticsNotInSource>False</DropStatisticsNotInSource>
+    <DropConstraintsNotInSource>False</DropConstraintsNotInSource>
+    <DropDmlTriggersNotInSource>False</DropDmlTriggersNotInSource>
+    <DropExtendedPropertiesNotInSource>False</DropExtendedPropertiesNotInSource>
+    <DropIndexesNotInSource>False</DropIndexesNotInSource>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+  </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="APMedia">
+      <Value>APMedia</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="BCIDRaw">
+      <Value>BCIDRaw</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ExcellusRaw">
+      <Value>ExcellusRaw</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="HealthnowRaw">
+      <Value>HealthnowRaw</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="IOPortal">
+      <Value>IOPortal</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="NewAuditPlatform">
+      <Value>NewAuditPlatform</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>
