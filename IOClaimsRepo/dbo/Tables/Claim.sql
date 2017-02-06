@@ -84,7 +84,7 @@
     [Payer3_id]                                        INT              NULL,
     [ReferringProviderOrOtherSourceProvider_id]        INT              NULL,
     [BillingProviderMedicareFacilityNumber]            NVARCHAR (255)   NULL,
-    [AttendingProviderMedicareFacilityNumber]          NVARCHAR (255)   NULL,
+    [AttendingProviderMedicareFacilityNumber]          NVARCHAR(255)   NULL,
     [SeverityOfIllness]                                VARCHAR (3)      NULL,
     [RiskOfMortality]                                  VARCHAR (3)      NULL,
     [STAGING_StageID]                                  INT              NULL,

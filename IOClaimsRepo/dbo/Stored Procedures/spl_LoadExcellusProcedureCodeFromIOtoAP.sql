@@ -12,12 +12,12 @@ BEGIN
 PRINT 'Selecting existing AP claims from ProcedureCode table for bactckey - ' + @BatchKey
 select max(p.Claim_Id) as AP_Claim_id, max(c.ClaimNumber) as ClaimNumber
 into #ap_proccode_claim_numbers
-from APAudit.dbo.ProcedureCode p
-INNER JOIN APAudit.dbo.Claim c 
+from [$(NewAuditPlatform)].dbo.ProcedureCode p 
+INNER JOIN [$(NewAuditPlatform)].dbo.Claim c 
 ON (
 	p.Claim_Id = c.Id 
-	and c.ClientId = @APClientId and 
-	c.BatchKey = @BatchKey
+	and c.Client_Id = @APClientId 
+	--and c.BatchKey = @BatchKey  --- this dones not exists in claim anymore Commented out but probably not correct
 )
 group by p.Claim_Id
 
@@ -26,7 +26,7 @@ select c.ClaimId as IO_Claim_Id, c.ClaimNumber as ClaimNumber,
 	p.AP_Claim_id, c.IcdIndicator
 into #claimsrepo_claim_ids
 from #ap_proccode_claim_numbers p
-INNER JOIN IOClaimsRepo.dbo.Claim c 
+INNER JOIN [$(DatabaseName)].dbo.Claim c 
 ON ( 
 	p.ClaimNumber = c.ClaimNumber
 	-- and c.ClientId = @IOClientId -- need index
@@ -37,7 +37,7 @@ select s.ServiceLineId, c.ClaimNumber,
 	s.Claim_id as IO_Claim_Id, c.AP_Claim_id, c.IcdIndicator
 into #claimsrepo_service_line_ids
 from #claimsrepo_claim_ids c
-INNER JOIN IOClaimsRepo.dbo.ServiceLine s ON c.IO_Claim_Id = s.Claim_id
+INNER JOIN [$(DatabaseName)].dbo.ServiceLine s ON c.IO_Claim_Id = s.Claim_id
 where s.LineNumber = 1 -- use the diagnosis codes from the first service line
 
 DROP TABLE #ap_proccode_claim_numbers;
@@ -47,7 +47,7 @@ BEGIN TRANSACTION;
 
 select *
 into #ap_proc_codes
-from [APAudit].[dbo].[ProcedureCode] p
+from [$(NewAuditPlatform)].[dbo].[ProcedureCode] p
 
 PRINT 'Deleting existing Procedure codes in AP for all claims in bactckey - ' + @BatchKey
 DELETE p
@@ -93,12 +93,12 @@ ON (
 select * from #ap_proc_codes;
 
 select * from 
-#ap_proc_codes a left outer join [APAudit].[dbo].[ProcedureCode] p
+#ap_proc_codes a left outer join [$(NewAuditPlatform)].[dbo].[ProcedureCode] p
 on a.Claim_Id = p.Claim_Id and a.Code = p.Code
 where p.Code is null;
 
 select * from 
-#ap_proc_codes a right outer join [APAudit].[dbo].[ProcedureCode] p
+#ap_proc_codes a right outer join [$(NewAuditPlatform)].[dbo].[ProcedureCode] p
 on a.Claim_Id = p.Claim_Id and a.Code = p.Code
 where a.Code is null;
 

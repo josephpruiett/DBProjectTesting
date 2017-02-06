@@ -31,7 +31,7 @@ BEGIN
 	
 	SELECT 'Audit concepts that are not defined in AP'	
 	SELECT distinct VULNERABILITY1_ID FROM  RESC_Excellus_Selection where batch_key = @Batchname and 
-	VULNERABILITY1_ID not in (Select distinct clientIssueId from NewAuditPlatform.dbo.IssueAssignment)
+	VULNERABILITY1_ID not in (Select distinct clientIssueId from [$(NewAuditPlatform)].dbo.IssueAssignment)
 	
 	SELECT 'RESC File Output'
 	--TODO: need to parameterize for DME/DRG/Contract
