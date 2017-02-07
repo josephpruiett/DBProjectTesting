@@ -100,6 +100,7 @@
     [REF4_DETAIL]            VARCHAR (MAX)  NULL,
     [REF5_DETAIL]            VARCHAR (MAX)  NULL,
     [Audit_ID]               VARCHAR (35)   NULL,
-    [Vendor_Comments]        VARCHAR (1000) NULL
+    [Vendor_Comments]        VARCHAR (1000) NULL, 
+    [RemoveMeBranchTesting] INT NULL
 );
 
