@@ -467,4 +467,7 @@
       <Value>$(SqlCmdVar__11)</Value>
     </SqlCmdVariable>
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="IOClaimsRepo.refactorlog" />
+  </ItemGroup>
 </Project>

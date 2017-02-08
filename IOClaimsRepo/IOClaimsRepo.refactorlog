@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="eb7792c5-4b1a-44c1-905f-6f771a025ac8" ChangeDateTime="02/07/2017 18:20:35">
+    <Property Name="ElementName" Value="[dbo].[Dpe_Identified_Claims_v2].[RemoveMe]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dpe_Identified_Claims_v2]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RemoveMeBranchTesting" />
+  </Operation>
+</Operations>
