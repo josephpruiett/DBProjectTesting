@@ -126,6 +126,7 @@
     <Folder Include="Security\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\User Defined Types\" />
+    <Folder Include="DacPacReferences" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Beneficiary.sql">
@@ -384,6 +385,21 @@
     <None Include="IOClaimsRepo2014NoWarnings.publish.xml" />
     <None Include="IOClaimsRepoTeamCityPush.publish.xml" />
     <None Include="IOClaimsRepoRefineProperties.publish.xml" />
+    <None Include="DacPacReferences\APMedia.dacpac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DacPacReferences\BCIDRaw.dacpac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DacPacReferences\ExcellusRaw.dacpac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DacPacReferences\HealthnowRaw.dacpac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DacPacReferences\NewAuditPlatform.dacpac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="dbo\Script.PostDeployment_ADD_Staging_StageID.sql" />
@@ -394,35 +410,35 @@
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </ArtifactReference>
-    <ArtifactReference Include="..\..\IOPortal\IOPortal\bin\Debug\IOPortal.dacpac">
-      <HintPath>..\..\IOPortal\IOPortal\bin\Debug\IOPortal.dacpac</HintPath>
+    <ArtifactReference Include="DacPacReferences\APMedia.dacpac">
+      <HintPath>DacPacReferences\APMedia.dacpac</HintPath>
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
-      <DatabaseSqlCmdVariable>IOPortal</DatabaseSqlCmdVariable>
+      <DatabaseSqlCmdVariable>APMedia</DatabaseSqlCmdVariable>
     </ArtifactReference>
-    <ArtifactReference Include="..\..\OtherDBDacPac\BCIDRaw.dacpac">
-      <HintPath>..\..\OtherDBDacPac\BCIDRaw.dacpac</HintPath>
+    <ArtifactReference Include="DacPacReferences\BCIDRaw.dacpac">
+      <HintPath>DacPacReferences\BCIDRaw.dacpac</HintPath>
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseSqlCmdVariable>BCIDRaw</DatabaseSqlCmdVariable>
     </ArtifactReference>
-    <ArtifactReference Include="..\..\OtherDBDacPac\ExcellusRaw.dacpac">
-      <HintPath>..\..\OtherDBDacPac\ExcellusRaw.dacpac</HintPath>
+    <ArtifactReference Include="DacPacReferences\ExcellusRaw.dacpac">
+      <HintPath>DacPacReferences\ExcellusRaw.dacpac</HintPath>
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseSqlCmdVariable>ExcellusRaw</DatabaseSqlCmdVariable>
     </ArtifactReference>
-    <ArtifactReference Include="..\..\OtherDBDacPac\HealthnowRaw.dacpac">
-      <HintPath>..\..\OtherDBDacPac\HealthnowRaw.dacpac</HintPath>
+    <ArtifactReference Include="DacPacReferences\HealthnowRaw.dacpac">
+      <HintPath>DacPacReferences\HealthnowRaw.dacpac</HintPath>
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseSqlCmdVariable>HealthnowRaw</DatabaseSqlCmdVariable>
     </ArtifactReference>
-    <ArtifactReference Include="..\..\OtherDBDacPac\NewAuditPlatform.dacpac">
-      <HintPath>..\..\OtherDBDacPac\NewAuditPlatform.dacpac</HintPath>
+    <ArtifactReference Include="DacPacReferences\IOPortal.dacpac">
+      <HintPath>DacPacReferences\IOPortal.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>IOPortal</DatabaseSqlCmdVariable>
+    </ArtifactReference>
+    <ArtifactReference Include="DacPacReferences\NewAuditPlatform.dacpac">
+      <HintPath>DacPacReferences\NewAuditPlatform.dacpac</HintPath>
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseSqlCmdVariable>NewAuditPlatform</DatabaseSqlCmdVariable>
-    </ArtifactReference>
-    <ArtifactReference Include="..\..\OtherDBDacPac\APMedia.dacpac">
-      <HintPath>..\..\OtherDBDacPac\APMedia.dacpac</HintPath>
-      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
-      <DatabaseSqlCmdVariable>APMedia</DatabaseSqlCmdVariable>
     </ArtifactReference>
   </ItemGroup>
   <ItemGroup>
@@ -432,23 +448,23 @@
     </SqlCmdVariable>
     <SqlCmdVariable Include="BCIDRaw">
       <DefaultValue>BCIDRaw</DefaultValue>
-      <Value>$(SqlCmdVar__2)</Value>
+      <Value>$(SqlCmdVar__7)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ExcellusRaw">
       <DefaultValue>ExcellusRaw</DefaultValue>
-      <Value>$(SqlCmdVar__3)</Value>
+      <Value>$(SqlCmdVar__8)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="HealthnowRaw">
       <DefaultValue>HealthnowRaw</DefaultValue>
-      <Value>$(SqlCmdVar__4)</Value>
+      <Value>$(SqlCmdVar__9)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="IOPortal">
       <DefaultValue>IOPortal</DefaultValue>
-      <Value>$(SqlCmdVar__1)</Value>
+      <Value>$(SqlCmdVar__10)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="NewAuditPlatform">
       <DefaultValue>NewAuditPlatform</DefaultValue>
-      <Value>$(SqlCmdVar__5)</Value>
+      <Value>$(SqlCmdVar__11)</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>
