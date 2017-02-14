@@ -430,11 +430,6 @@
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseSqlCmdVariable>HealthnowRaw</DatabaseSqlCmdVariable>
     </ArtifactReference>
-    <ArtifactReference Include="DacPacReferences\IOPortal.dacpac">
-      <HintPath>DacPacReferences\IOPortal.dacpac</HintPath>
-      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
-      <DatabaseSqlCmdVariable>IOPortal</DatabaseSqlCmdVariable>
-    </ArtifactReference>
     <ArtifactReference Include="DacPacReferences\NewAuditPlatform.dacpac">
       <HintPath>DacPacReferences\NewAuditPlatform.dacpac</HintPath>
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
@@ -460,7 +455,7 @@
     </SqlCmdVariable>
     <SqlCmdVariable Include="IOPortal">
       <DefaultValue>IOPortal</DefaultValue>
-      <Value>$(SqlCmdVar__10)</Value>
+      <Value>$(SqlCmdVar__12)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="NewAuditPlatform">
       <DefaultValue>NewAuditPlatform</DefaultValue>
@@ -469,5 +464,14 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="IOClaimsRepo.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\IOPortal\IOPortal\IOPortal.sqlproj">
+      <Name>IOPortal</Name>
+      <Project>{223aabfa-ca47-497e-ae1c-a46879c9f02c}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseSqlCmdVariable>IOPortal</DatabaseSqlCmdVariable>
+    </ProjectReference>
   </ItemGroup>
 </Project>
